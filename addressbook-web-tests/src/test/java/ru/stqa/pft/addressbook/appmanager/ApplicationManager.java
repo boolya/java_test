@@ -112,8 +112,20 @@ public class ApplicationManager {
     wd.findElement(By.name("selected[]")).click();
   }
 
+  public void selectContact() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
   public void deleteSelectedGroups() {
     wd.findElement(By.name("delete")).click();
+  }
+
+  public void modifySelectedContact() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+  }
+
+  public void deleteSelectedContact() {
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/input[2]")).click();
   }
 
   public void stop() {
