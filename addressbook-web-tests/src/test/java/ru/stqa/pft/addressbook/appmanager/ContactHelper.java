@@ -35,11 +35,15 @@ public class ContactHelper extends BaseHelper {
     click(By.name("selected[]"));
   }
 
-  public void modifySelectedContact() {
+  public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-  public void deleteSelectedContact() {
+  public void submitContactDeletion() {
     click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 }
