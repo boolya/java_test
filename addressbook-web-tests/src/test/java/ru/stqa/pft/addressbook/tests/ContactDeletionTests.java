@@ -6,11 +6,11 @@ public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDeletion() {
-    app.gotoHomePage();
+    app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().selectContact();
     app.getContactHelper().modifySelectedContact();
     app.getContactHelper().deleteSelectedContact();
-    app.getContactHelper().returnToHomePage();
+    app.getNavigationHelper().gotoHomePage();
   }
 
 }

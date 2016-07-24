@@ -15,10 +15,6 @@ public class ContactHelper {
     this.wd = wd;
   }
 
-  public void returnToHomePage() {
-    wd.findElement(By.linkText("home")).click();
-  }
-
   public void initContactCreation() {
     wd.findElement(By.linkText("add new")).click();
   }
