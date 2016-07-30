@@ -64,9 +64,9 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("home"));
   }
 
-  public void createContact(ContactData contact, boolean createPage) {
+  public void createContact(ContactData contact) {
     initContactCreation();
-    fillContactForm(contact, createPage);
+    fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
   }

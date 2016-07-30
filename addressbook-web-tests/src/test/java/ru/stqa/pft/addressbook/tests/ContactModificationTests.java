@@ -22,7 +22,7 @@ public class ContactModificationTests extends TestBase {
         app.getGroupHelper().createGroup(new GroupData("test1", null, null));
       }
       app.getNavigationHelper().gotoHomePage();
-      app.getContactHelper().createContact(new ContactData("First_name_Test", "Last_name_Test", "Address_Test", "1234567", "0987654321", "test1@test.com", "test2@test.com", "test1"), true);
+      app.getContactHelper().createContact(new ContactData("First_name_Test", "Last_name_Test", "Address_Test", "1234567", "0987654321", "test1@test.com", "test2@test.com", "test1"));
     }
     // Если есть хотя бы один контакт в списке, берём его для изменения его данных.
     app.getContactHelper().selectContact();
