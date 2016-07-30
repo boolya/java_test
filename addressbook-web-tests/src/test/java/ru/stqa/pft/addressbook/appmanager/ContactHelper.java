@@ -1,8 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import com.thoughtworks.selenium.webdriven.commands.IsElementPresent;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -60,5 +58,20 @@ public class ContactHelper extends BaseHelper {
   public void submitContactDeletionFromList() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
+  }
+
+  public void returnToHomePage() {
+    click(By.linkText("home"));
+  }
+
+  public void createContact(ContactData contact, boolean createPage) {
+    initContactCreation();
+    fillContactForm(contact, createPage);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
