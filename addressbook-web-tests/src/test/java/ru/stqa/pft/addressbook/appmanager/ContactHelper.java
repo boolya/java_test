@@ -43,8 +43,8 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initContactModification() {
@@ -91,7 +91,8 @@ public class ContactHelper extends BaseHelper {
       String[] textParts = text.split(" ");
       String firstName = textParts[1].replace("(", "");
       String lastName = textParts[2].replace(")", "");
-      ContactData contact = new ContactData(firstName, lastName, null, null, null, null, null, null);
+      int id = Integer.parseInt(element.getAttribute("value"));
+      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;

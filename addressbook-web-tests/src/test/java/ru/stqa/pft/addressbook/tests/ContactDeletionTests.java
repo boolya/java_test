@@ -26,11 +26,14 @@ public class ContactDeletionTests extends TestBase {
     }
     // Если есть хотя бы один контакт для удаления, берём его и удаляем.
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().submitContactDeletionFromList();
     app.getContactHelper().returnToHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() - 1);
+
+    before.remove(before.size() - 1);
+    Assert.assertEquals(before, after);
   }
 
 }
