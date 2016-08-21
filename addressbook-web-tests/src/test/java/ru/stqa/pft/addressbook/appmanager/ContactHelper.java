@@ -10,9 +10,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Оля on 24.07.2016.
- */
 public class ContactHelper extends BaseHelper {
 
   public ContactHelper(WebDriver wd) {
@@ -68,10 +65,24 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("home"));
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
+    returnToHomePage();
+  }
+
+  public void modify(int index, ContactData contact) {
+    selectContact(index);
+    initContactModification();
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnToHomePage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    submitContactDeletionFromList();
     returnToHomePage();
   }
 
@@ -83,7 +94,7 @@ public class ContactHelper extends BaseHelper {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
     for (WebElement element : elements) {

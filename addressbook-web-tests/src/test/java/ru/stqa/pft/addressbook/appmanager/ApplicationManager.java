@@ -8,9 +8,6 @@ import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Оля on 24.07.2016.
- */
 public class ApplicationManager {
   WebDriver wd;
 
@@ -45,15 +42,15 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 

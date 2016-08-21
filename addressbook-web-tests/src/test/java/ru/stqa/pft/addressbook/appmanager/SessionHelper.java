@@ -3,9 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-/**
- * Created by Оля on 24.07.2016.
- */
 public class SessionHelper extends BaseHelper {
 
   public SessionHelper(WebDriver wd) {
@@ -13,8 +10,8 @@ public class SessionHelper extends BaseHelper {
   }
 
   public void login(String username, String password) {
-    type(By.name("user"),username);
-    type(By.name("pass"),password);
+    type(By.name("user"), username);
+    type(By.name("pass"), password);
     click(By.xpath("//form[@id='LoginForm']/input[3]"));
   }
 
