@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase {
     // На данном этапе считаем, что все группы создаются и модифицируются с названием "test1".
     app.goTo().groupPage();
     if (app.group().list().size() == 0) {
-      app.group().create(new GroupData("test1", null, null));
+      app.group().create(new GroupData().withName("test1"));
     }
   }
 

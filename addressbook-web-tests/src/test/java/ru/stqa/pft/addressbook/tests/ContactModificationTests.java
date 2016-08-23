@@ -21,7 +21,7 @@ public class ContactModificationTests extends TestBase {
       // На данном этапе считаем, что все группы создаются и модифицируются с названием "test1".
       app.goTo().groupPage();
       if (app.group().list().size() == 0) {
-        app.group().create(new GroupData("test1", null, null));
+        app.group().create(new GroupData().withName("test1"));
       }
       app.goTo().homePage();
       app.contact().create(new ContactData("First_name_Test", "Last_name_Test", "Address_Test", "1234567", "0987654321", "test1@test.com", "test2@test.com", "test1"));
