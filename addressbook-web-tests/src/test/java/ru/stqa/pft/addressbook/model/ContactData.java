@@ -47,7 +47,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withEmail1(String email1) {
+  public ContactData withEmail(String email1) {
     this.email1 = email1;
     return this;
   }
@@ -90,7 +90,7 @@ public class ContactData {
     return phoneWork;
   }
 
-  public String getEmail1() {
+  public String getEmail() {
     return email1;
   }
 

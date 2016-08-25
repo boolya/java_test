@@ -8,7 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactPhoneTests extends TestBase {
+public class ContactDataTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -22,17 +22,20 @@ public class ContactPhoneTests extends TestBase {
       app.contact().create(new ContactData().
               withFirstName("First_name_Test").withLastName("Last_name_Test").
               withAddress("Address_Test").withPhoneHome("1 (234) 567").withPhoneMobile("+7987654321").withPhoneWork("98-76-54").
-              withEmail1("test1@test.com").withEmail2("test2@test.com").withGroup("test1"));
+              withEmail("test1@test.com").withEmail2("test2@test.com").withGroup("test1"));
     }
   }
 
 
   @Test
-  public void testContactPhone() {
+  public void testContactPhonesAddressEmails() {
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
+    assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+    assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
+    assertThat(contact.getEmail2(), equalTo(contactInfoFromEditForm.getEmail2()));
     assertThat(contact.getPhoneHome(), equalTo(cleaned(contactInfoFromEditForm.getPhoneHome())));
     assertThat(contact.getPhoneMobile(), equalTo(cleaned(contactInfoFromEditForm.getPhoneMobile())));
     assertThat(contact.getPhoneWork(), equalTo(cleaned(contactInfoFromEditForm.getPhoneWork())));
