@@ -7,6 +7,7 @@ public class ContactData {
   private String address;
   private String phoneHome;
   private String phoneMobile;
+  private String phoneWork;
   private String email1;
   private String email2;
   private String group;
@@ -38,6 +39,11 @@ public class ContactData {
 
   public ContactData withPhoneMobile(String phoneMobile) {
     this.phoneMobile = phoneMobile;
+    return this;
+  }
+
+  public ContactData withPhoneWork(String phoneWork) {
+    this.phoneWork = phoneWork;
     return this;
   }
 
@@ -80,6 +86,10 @@ public class ContactData {
     return phoneMobile;
   }
 
+  public String getPhoneWork() {
+    return phoneWork;
+  }
+
   public String getEmail1() {
     return email1;
   }
@@ -90,6 +100,22 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", address='" + address + '\'' +
+            ", phoneHome='" + phoneHome + '\'' +
+            ", phoneMobile='" + phoneMobile + '\'' +
+            ", phoneWork='" + phoneWork + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", group='" + group + '\'' +
+            '}';
   }
 
   @Override
@@ -111,20 +137,5 @@ public class ContactData {
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", address='" + address + '\'' +
-            ", phoneHome='" + phoneHome + '\'' +
-            ", phoneMobile='" + phoneMobile + '\'' +
-            ", email1='" + email1 + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", group='" + group + '\'' +
-            '}';
   }
 }
