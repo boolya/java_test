@@ -29,6 +29,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("work"), contactData.getPhoneWork());
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -49,10 +50,6 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-  public void submitContactDeletion() {
-    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
-  }
-
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
@@ -60,6 +57,10 @@ public class ContactHelper extends BaseHelper {
   public void submitContactDeletionFromList() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
+  }
+
+  public void submitContactDeletion() {
+    click(By.xpath("//div[@id='content']/form[2]/input[2]"));
   }
 
   public void returnToHomePage() {
@@ -127,13 +128,21 @@ public class ContactHelper extends BaseHelper {
     String address = wd.findElement(By.name("address")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName).
-            withAddress(address).withEmail(email).withEmail2(email2).
+            withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3).
             withPhoneHome(home).withPhoneMobile(mobile).withPhoneWork(work);
+  }
+
+  public ContactData infoFromViewPage(ContactData contact) {
+    initContactViewPageById(contact.getId());
+    String contactInfo = wd.findElement(By.xpath(".//div[@id='content']")).getText();
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withContactInfo(contactInfo);
   }
 
   private void initContactModificationById(int id) {
@@ -147,5 +156,8 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
+  private void initContactViewPageById(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+  }
 
 }
