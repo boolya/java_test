@@ -7,7 +7,10 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,21 +21,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
   @DataProvider
-  public Iterator<Object[]> validContacts() {
+  public Iterator<Object[]> validContacts() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
     File photo = new File("src/test/resources/image.jpg"); //всем контактам одно фото пока
-    list.add(new Object[] {new ContactData().withFirstName("First_name_Test1").withLastName("Last_name_Test1").
-            withAddress("Address_Test1").withPhoneHome("123-123-1").withPhoneMobile("111-222-333-1").withPhoneWork("987-987-1").
-            withEmail("testemail1_1@test.com").withEmail2("testemail2_1@test.com").withEmail3("testemail3_1@test.com")
-            .withGroup("test1").withPhoto(photo)});
-    list.add(new Object[] {new ContactData().withFirstName("First_name_Test2").withLastName("Last_name_Test2").
-            withAddress("Address_Test2").withPhoneHome("123-123-2").withPhoneMobile("111-222-333-2").withPhoneWork("987-987-2").
-            withEmail("testemail1_2@test.com").withEmail2("testemail2_2@test.com").withEmail3("testemail3_2@test.com")
-            .withGroup("test1").withPhoto(photo)});
-    list.add(new Object[] {new ContactData().withFirstName("First_name_Test3").withLastName("Last_name_Test3").
-            withAddress("Address_Test3").withPhoneHome("123-123-3").withPhoneMobile("111-222-333-3").withPhoneWork("987-987-3").
-            withEmail("testemail1_3@test.com").withEmail2("testemail2_3@test.com").withEmail3("testemail3_3@test.com")
-            .withGroup("test1").withPhoto(photo)});
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+    String line = reader.readLine();
+    while (line != null) {
+      String[] split = line.split(";");
+      list.add(new Object[]{new ContactData().withFirstName(split[0]).withLastName(split[1]).withAddress(split[2])
+              .withPhoneHome(split[3]).withPhoneMobile(split[4]).withPhoneWork(split[5])
+              .withEmail(split[6]).withEmail2(split[7]).withEmail3(split[8]).withGroup("test1").withPhoto(photo)});
+      line = reader.readLine();
+    }
     return list.iterator();
   }
 
@@ -46,7 +46,7 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @Test (dataProvider = "validContacts")
+  @Test(dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) {
     app.goTo().homePage();
     Contacts before = app.contact().all();
@@ -57,7 +57,7 @@ public class ContactCreationTests extends TestBase {
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testBadContactCreation() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
@@ -71,7 +71,7 @@ public class ContactCreationTests extends TestBase {
     assertThat(after, equalTo(before));
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testCurrentDir() {
     File currentDir = new File(".");
     System.out.println(currentDir.getAbsolutePath()); //C:\JavaTest\java_test\addressbook-web-tests\.
