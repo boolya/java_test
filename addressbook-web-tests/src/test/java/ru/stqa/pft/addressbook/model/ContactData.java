@@ -169,6 +169,7 @@ public class ContactData {
             ", email3='" + email3 + '\'' +
             ", group='" + group + '\'' +
             ", contactInfo='" + contactInfo + '\'' +
+            ", photo='" + photo + '\'' +
             '}';
   }
 
