@@ -1,0 +1,62 @@
+[
+  {
+    "firstName": "First_name_Test0",
+    "lastName": "Last_name_Test0",
+    "address": "Address 0",
+    "phoneHome": "123-123-0",
+    "phoneMobile": "111-222-333-0",
+    "phoneWork": "987-987-0",
+    "email1": "testemail1_0@test.com",
+    "email2": "testemail2_0@test.com",
+    "email3": "testemail3_0@test.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First_name_Test1",
+    "lastName": "Last_name_Test1",
+    "address": "Address 1",
+    "phoneHome": "123-123-1",
+    "phoneMobile": "111-222-333-1",
+    "phoneWork": "987-987-1",
+    "email1": "testemail1_1@test.com",
+    "email2": "testemail2_1@test.com",
+    "email3": "testemail3_1@test.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First_name_Test2",
+    "lastName": "Last_name_Test2",
+    "address": "Address 2",
+    "phoneHome": "123-123-2",
+    "phoneMobile": "111-222-333-2",
+    "phoneWork": "987-987-2",
+    "email1": "testemail1_2@test.com",
+    "email2": "testemail2_2@test.com",
+    "email3": "testemail3_2@test.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First_name_Test3",
+    "lastName": "Last_name_Test3",
+    "address": "Address 3",
+    "phoneHome": "123-123-3",
+    "phoneMobile": "111-222-333-3",
+    "phoneWork": "987-987-3",
+    "email1": "testemail1_3@test.com",
+    "email2": "testemail2_3@test.com",
+    "email3": "testemail3_3@test.com",
+    "group": "test1"
+  },
+  {
+    "firstName": "First_name_Test4",
+    "lastName": "Last_name_Test4",
+    "address": "Address 4",
+    "phoneHome": "123-123-4",
+    "phoneMobile": "111-222-333-4",
+    "phoneWork": "987-987-4",
+    "email1": "testemail1_4@test.com",
+    "email2": "testemail2_4@test.com",
+    "email3": "testemail3_4@test.com",
+    "group": "test1"
+  }
+]
