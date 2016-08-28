@@ -38,30 +38,4 @@
     <group>test1</group>
     <photo>src\test\resources\image.jpg</photo>
   </contact>
-  <contact>
-    <firstName>First_name_Test3</firstName>
-    <lastName>Last_name_Test3</lastName>
-    <address>Address 3</address>
-    <phoneHome>123-123-3</phoneHome>
-    <phoneMobile>111-222-333-3</phoneMobile>
-    <phoneWork>987-987-3</phoneWork>
-    <email1>testemail1_3@test.com</email1>
-    <email2>testemail2_3@test.com</email2>
-    <email3>testemail3_3@test.com</email3>
-    <group>test1</group>
-    <photo>src\test\resources\image.jpg</photo>
-  </contact>
-  <contact>
-    <firstName>First_name_Test4</firstName>
-    <lastName>Last_name_Test4</lastName>
-    <address>Address 4</address>
-    <phoneHome>123-123-4</phoneHome>
-    <phoneMobile>111-222-333-4</phoneMobile>
-    <phoneWork>987-987-4</phoneWork>
-    <email1>testemail1_4@test.com</email1>
-    <email2>testemail2_4@test.com</email2>
-    <email3>testemail3_4@test.com</email3>
-    <group>test1</group>
-    <photo>src\test\resources\image.jpg</photo>
-  </contact>
 </list>
