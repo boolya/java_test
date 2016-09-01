@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -21,10 +22,11 @@ public class ContactDataTests extends TestBase {
         app.group().create(new GroupData().withName("test1"));
       }
       app.goTo().homePage();
+      Groups groups = app.db().groups();
       app.contact().create(new ContactData().
               withFirstName("First_name_Test").withLastName("Last_name_Test").
               withAddress("Address_Test").withPhoneHome("1 (234) 567").withPhoneWork("98-76-54").
-              withEmail("test1@test.com").withEmail3("test3@test.com").withGroup("test1"));
+              withEmail("test1@test.com").withEmail3("test3@test.com").inGroup(groups.iterator().next()));
     }
   }
 

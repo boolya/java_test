@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -93,7 +94,7 @@ public class ContactDataGenerator {
               .withEmail(String.format("testemail1_%s@test.com", i))
               .withEmail2(String.format("testemail2_%s@test.com", i))
               .withEmail3(String.format("testemail3_%s@test.com", i))
-              .withGroup("test1")
+              //.withGroup("test1")
               .withPhoto(photo)
       );
     }
