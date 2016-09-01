@@ -13,14 +13,9 @@ public class ContactDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    // Сначала проверяем, есть ли хоть один контакт, который можно было бы удалить.
-    app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
-      // Если ни одного контакта нет - создаём,
-      // предварительно проверив, есть ли хоть одна группа (создаём и новую группу, если нет ни одной).
-      // На данном этапе считаем, что все группы создаются и модифицируются с названием "test1".
-      app.goTo().groupPage();
-      if (app.group().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      if (app.db().groups().size() == 0) {
+        app.goTo().groupPage();
         app.group().create(new GroupData().withName("test1"));
       }
       app.goTo().homePage();
@@ -33,11 +28,12 @@ public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDeletion() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
+    app.goTo().homePage();
     app.contact().delete(deletedContact);
     assertThat(app.contact().count(), equalTo(before.size() - 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
   }
 

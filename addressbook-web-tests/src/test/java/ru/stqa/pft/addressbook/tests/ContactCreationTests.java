@@ -57,36 +57,34 @@ public class ContactCreationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    // Перед созданием нового контакта проверяем, есть ли хоть одна группа. Если нет - создаём.
-    // На данном этапе считаем, что все группы создаются и модифицируются с названием "test1".
-    app.goTo().groupPage();
-    if (app.group().all().size() == 0) {
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
       app.group().create(new GroupData().withName("test1"));
     }
   }
 
   @Test(dataProvider = "validContactsFromXml")
   public void testContactCreation(ContactData contact) {
+    Contacts before = app.db().contacts();
     app.goTo().homePage();
-    Contacts before = app.contact().all();
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
   @Test(enabled = false)
   public void testBadContactCreation() {
-    app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData contact = new ContactData().
             withFirstName("First_name_Test'").withLastName("Last_name_Test").
             withAddress("Address_Test").withPhoneHome("1 (234) 567").withPhoneMobile("+7987654321").withPhoneWork("98-76-54").
             withEmail("test1@test.com").withEmail2("test2@test.com").withGroup("test1");
+    app.goTo().homePage();
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));
   }
 
