@@ -103,13 +103,6 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  //public DbHelper db() {
-    //if (dbHelper == null) {
-      //dbHelper = new DbHelper(this);
-    //}
-    //return dbHelper;
-  //}
-
   public DbHelper db() {
     return dbHelper;
   }
